@@ -1,13 +1,13 @@
-package com.creep.Creep;
+package com.creeps;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CreepApplication {
+public class CreepsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CreepApplication.class, args);
+		SpringApplication.run(CreepsApplication.class, args);
 	}
 
 }

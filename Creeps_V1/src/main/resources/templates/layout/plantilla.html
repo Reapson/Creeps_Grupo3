@@ -1,0 +1,77 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head th:fragment="head">
+        <title>Creeps</title>
+        <meta charset="UTF-8" />
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet" />
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <header th:fragment="header" class="header">
+            <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0d0d0d; color: #f2e2ce;">
+                <!-- Logo -->
+                <a class="navbar-brand" href="#">
+                    <!--No muestra la imagen y tiene los .. que no deberia tener-->
+                    <img src="../static/imagenes/CreepsLogo.JPG" alt="Logo" style="width: 25px; height: 25px;"/>           
+                </a>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#" style="color: #f2e2ce;">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" style="color: #f2e2ce;">Búsqueda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/admin/admin}" style="color: #f2e2ce;">Administración</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user" style="color: #f2e2ce;"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"
+                         style="background-color: #f2e2ce; color: #0d0d0d;">
+                        <a class="dropdown-item" href="#">Inicio de sesion</a>                    
+                    </div>
+                    <div class="empty-space" style="width: 20px;"></div>
+                </div>
+                <div>
+                    <p></p>
+                </div>
+            </nav>
+        </header>
+
+        <footer th:fragment="footer" class="footer">
+            <div class="container-fluid" style="background-color: #0d0d0d; color: #f2e2ce; padding: 20px 0;">
+                <div class="row justify-content-center">
+                    <!-- Primer columna -->
+                    <div class="col-md-4 text-center" style="padding: 0 15px;">
+                        <h5>Centro de Ayuda</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" style="color: #f2e2ce;">Preguntas frecuentes</a></li>
+                            <li><a href="#" style="color: #f2e2ce;">Contacto</a></li>                            
+                        </ul>                     
+                    </div>
+                    <!-- Segunda columna -->
+                    <div class="col-md-4 text-center" style="padding: 0 15px;">
+                        <h5>Compañia</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" style="color: #f2e2ce;">Politicas de Privacidad</a></li>
+                            <li><a href="#" style="color: #f2e2ce;">Terminos y Condiciones</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

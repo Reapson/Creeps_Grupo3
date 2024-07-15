@@ -18,12 +18,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.concurrent.TimeUnit;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-/**
- *
- * @author adaz1
- */
+@Service
 public class FirebaseStorageServiceImpl implements FirebaseStorageService{
     
     @Override

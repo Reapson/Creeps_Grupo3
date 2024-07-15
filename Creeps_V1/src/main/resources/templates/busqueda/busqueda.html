@@ -9,10 +9,8 @@
     <body>
         <header th:replace="~{layout/plantilla :: header}"/>
         <div class="container">
-            <h1>Admin</h1>
-            <form th:replace="~{admin/fragmentos :: formularioProducto}"></form>
-            <hr class="my-4"></hr>
-            <section th:replace="~{admin/fragmentos :: listadoProductos}"></section>
+            <h1>Busqueda</h1>            
+            <section th:replace="~{busqueda/fragmentos :: productosGrid}"></section>
         </div>
         <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>

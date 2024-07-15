@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Creeps</title>
+    </head>
+    
+    <body>
+        
+        <section th:fragment="productosGrid" id="productos">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-md-3 g-4"> 
+                    <div th:each="producto : ${productos}" class="col">
+                        <div class="card h-100">
+                            <a th:href="@{'/producto/detalles/' + ${producto.idProducto}}">
+                                <img th:src="@{${producto.urlImagen}}" class="card-img-top" alt="Imagen de [[${producto.nombre}]]"</img>
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">[[${producto.nombre}]]</h5>
+                                <p class="card-text">Precio: [[${producto.precio}]]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </body>
+</html>

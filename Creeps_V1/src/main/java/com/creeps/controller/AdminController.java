@@ -25,10 +25,9 @@ public class AdminController {
     private FirebaseStorageServiceImpl firebaseStorageService;
     
     @GetMapping("admin")
-//  El modelo es para inyectar variables al credor de html
     public String inicio(Model model) {
-
-//      El retorno indica la direccion relativa del html que se va a crear
+        var productos = productoService.getProductos();
+        model.addAttribute("productos", productos);
         return "/admin/admin";
     }
     

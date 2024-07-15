@@ -40,8 +40,5 @@ public class Producto {
         this.precio = precio;
         this.stock = stock;
         this.urlImagen = urlImagen;
-    }
-    
-    
-
+    }  
 }

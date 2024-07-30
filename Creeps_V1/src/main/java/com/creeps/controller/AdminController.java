@@ -31,7 +31,8 @@ public class AdminController {
         return "/admin/admin";
     }
     
-    @PostMapping("/registrar")
+    
+    @PostMapping("/registrarProducto")
     public String productoRegistrar(Producto producto,            
             @RequestParam("imagenFile") MultipartFile imagenFile) {        
         if (!imagenFile.isEmpty()) {
@@ -46,5 +47,29 @@ public class AdminController {
         }
         productoService.save(producto);
         return "redirect:/admin/admin";   
+    }
+    
+    @GetMapping("/modificarProducto/{idProducto}")
+    public String categoriaModificar(Producto producto, Model model) {
+        producto = productoService.getProducto(producto);
+        model.addAttribute("producto", producto);
+        return "/producto/modificar";
+    }
+    
+    @PostMapping("/guardarProducto")
+    public String productoGuardar(Producto producto,
+            @RequestParam("imagenFile") MultipartFile imagenFile) {        
+        if (!imagenFile.isEmpty()) {
+            productoService.save(producto);
+            producto.setUrlImagen(
+                    firebaseStorageService.cargaImagen(
+                            imagenFile,
+                            "producto",
+                            producto.getIdProducto()
+                    )
+            );
+        }
+        productoService.save(producto);
+        return "redirect:/admin/admin";
     }
 }

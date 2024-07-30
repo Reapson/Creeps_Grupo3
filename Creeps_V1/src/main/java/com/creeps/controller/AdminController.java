@@ -53,7 +53,7 @@ public class AdminController {
     public String categoriaModificar(Producto producto, Model model) {
         producto = productoService.getProducto(producto);
         model.addAttribute("producto", producto);
-        return "/producto/modificar";
+        return "/admin/modificarProducto";
     }
     
     @PostMapping("/guardarProducto")
@@ -70,6 +70,12 @@ public class AdminController {
             );
         }
         productoService.save(producto);
+        return "redirect:/admin/admin";
+    }
+    
+    @GetMapping("/eliminarProducto/{idProducto}")
+    public String productoEliminar(Producto producto) {
+        productoService.delete(producto);
         return "redirect:/admin/admin";
     }
 }

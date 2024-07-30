@@ -117,64 +117,118 @@
         </section>
 
         <!--------------------------------------------------->
-        <!--Tabla Lista de productos-->
+        <!-- Editar producto-->
         <!--------------------------------------------------->
         <section th:fragment="editarProducto">
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    
-                    <!--llamada al controlador  th:action="@{/admin/guardar}" -->
-                    <form method="POST"                          
-                          th:action="@{/admin/guardarProducto}" 
-                          th:object="${producto}"
-                          class="was-validated"                          
-                          enctype="multipart/form-data">
-                        <!--enctype permite subir archivos de imagen u otros-->
-                        
-                        <!--Funcionan como variables para contener los datos sin mostrarlos-->
-                        <input type="hidden" name="idProducto" th:field="*{idProducto}"/>
-                        <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>                        
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
 
-                        <div id=details>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h4>[[#{accion.actualizar}]]</h4>
+                <form method="POST"                          
+                      th:action="@{/admin/guardarProducto}" 
+                      th:object="${producto}"
+                      class="was-validated"                          
+                      enctype="multipart/form-data">       
+
+                    <input type="hidden" name="idProducto" th:field="*{idProducto}"/>
+                    <input type="hidden" name="urlImagen" th:field="*{urlImagen}"/>                        
+
+                    <div id=details>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4>Actualizar Producto</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            
+                                            <div class="mb-3">
+                                                <label for="nombre">Nombre</label>
+                                                <input type="text" class="form-control" 
+                                                       name="nombre" th:field="*{nombre}"
+                                                       required="true">
                                             </div>
-                                            <div class="card-body">
-                                                <div class="mb-3">
-                                                    <label for="descripcion">[[#{categoria.descripcion}]]</label>
-                                                    <input type="text" class="form-control" 
-                                                           name="descripcion" th:field="*{descripcion}"
-                                                           required="true">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="activo">[[#{categoria.activo}]]</label>
-                                                    <input class="form-check-input" 
-                                                           type="checkbox" 
-                                                           name="activo" 
-                                                           id="activo"
-                                                           th:field="*{activo}">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="imagen">[[#{categoria.rutaImagen}]]</label>
-                                                    <input class="form-control" type="file" name="imagenFile"
-                                                           onchange="readURL(this);" />
-                                                    <img id="blah" th:src="@{${categoria.rutaImagen}}" alt="your image" height="200"/>
-                                                </div>
+                                            
+                                            <div class="mb-3">
+                                                <label for="genero">Género</label>
+                                                <select class="form-control" name="genero" th:field="*{genero}" required>
+                                                    <option value="Masculino" th:selected="${producto.genero == 'Masculino'}">Masculino</option>
+                                                    <option value="Femenino" th:selected="${producto.genero == 'Femenino'}">Femenino</option>
+                                                </select>
                                             </div>
+                                            
+                                            <div class="mb-3">
+                                                <label for="talla">Talla</label>
+                                                <select class="form-control" name="talla" th:field="*{talla}" required>
+                                                    <option value="XS" th:selected="${producto.talla == 'XS'}">XS</option>
+                                                    <option value="S" th:selected="${producto.talla == 'S'}">S</option>
+                                                    <option value="M" th:selected="${producto.talla == 'M'}">M</option>
+                                                    <option value="L" th:selected="${producto.talla == 'L'}">L</option>
+                                                    <option value="XL" th:selected="${producto.talla == 'XL'}">XL</option>
+                                                    <option value="XXL" th:selected="${producto.talla == 'XXL'}">XXL</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <label for="precio">Precio</label>
+                                                <input type="number" class="form-control" 
+                                                       name="precio" th:field="*{precio}"
+                                                       required="true">
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <label for="stock">Stock</label>
+                                                <input type="number" class="form-control" 
+                                                       name="stock" th:field="*{stock}"
+                                                       required="true">
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <label for="imagen">Imagen</label>
+                                                <input class="form-control" type="file" name="imagenFile"
+                                                       onchange="readURL(this);" />
+                                                <img id="blah" th:src="@{${producto.urlImagen}}" alt="your image" height="200"/>
+                                            </div>
+                                            
+                                            <section th:replace="~{admin/fragmentos :: botonesEditar}"/>
+                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+        
+    <section th:fragment="botonesEditar">
+            <div class="container py-4 mb-4 bg-light">
+                <div class="row">
+                    <div class="col-md-4 d-grid">
+                        <a th:href="@{/admin/admin}" class="btn btn-primary">
+                            <i class="fas fa-arrow-left"></i> Atras
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">                                
+                        <a th:href="@{/admin/eliminarProducto/}+${producto.idProducto}"
+                           class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Eliminar
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-check"></i> Guardar
+                        </button>
+                    </div>
                 </div>
             </div>
-        </section>
+        </section>    
+        
+        
+        
 
     </body>
 </html>

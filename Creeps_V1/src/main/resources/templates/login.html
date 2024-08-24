@@ -12,22 +12,22 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-header bg-success"><h2>Iniciar Sesion</h2></div>
-                        <div class="card-body">
+                        <div class="card-header bg-success" style="color: white;" ><h2>Iniciar Sesion</h2></div>
+                        <div class="card-body" style="background-color: black;">
                             <form method="POST" th:action="@{/login}">
                                 <div class="form-group row my-3">
-                                    <label class="col-md-5 my-auto" for="username"><i class="fas fa-user-lock"></i>Usuario</label>
+                                    <label class="col-md-5 my-auto" for="username" style="color: white;"><i class="fas fa-user-lock"></i>Usuario</label>
                                     <div class="col-md-7 my-auto">
                                         <input class="form-control" type="text" name="username" id="username"/></div></div>
                                 <div class="form-group row my-3">
-                                    <label class="col-md-5 my-auto" for="password"><i class="fas fa-key"></i>Contraseña</label>
+                                    <label class="col-md-5 my-auto" for="password" style="color: white;"><i class="fas fa-key"></i>Contraseña</label>
                                     <div class="col-md-7 my-auto"><input class="form-control" type="password" name="password" id="password"/></div></div>
                                 <div class="card-footer col text-center">
-                                    <button class="btn btn-primary" >
+                                    <button class="btn btn-primary" style="background-color: white;">
                                         <a th:href="@{/registro/nuevo}" class="btn"><i class="fas fa-user-plus"></i>Registrar</a></button>
-                                    <button class="btn btn-info" >                                        
+                                    <button class="btn btn-info" style="background-color: white;">                                        
                                         <a th:href="@{/registro/recordar}" class="btn"><i class="fas fa-envelope"></i>Recordar</a></button>
-                                    <button class="btn btn-success" type="submit">
+                                    <button class="btn btn-success" type="submit" style="background-color: white;">
                                         <span class="btn"><i class="fas fa-sign-in-alt"></i>
                                             Iniciar Sesion</span></button>
                                 </div>

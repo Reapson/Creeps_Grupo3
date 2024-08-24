@@ -74,7 +74,7 @@ public class ProjectConfig implements WebMvcConfigurer{
                 .authorizeHttpRequests((request) -> request
                 .requestMatchers("/", "/index", "/errores/**",
                         "/carrito/**", "/busqueda/**", "/reportes/**",
-                        "/registro/**", "/js/**", "/webjars/**")
+                        "/registro/**", "/js/**", "/webjars/**", "/imagenes/**")
                 .permitAll() //todos los roles van a tener acceso a las vistas que estan arriba
                 .requestMatchers(
                         "/admin/**"

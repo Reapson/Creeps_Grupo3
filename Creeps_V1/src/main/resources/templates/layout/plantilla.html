@@ -17,9 +17,8 @@
         <header th:fragment="header" class="header">
             <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0d0d0d; color: #f2e2ce;">
                 <!-- Logo -->
-                <a class="navbar-brand" href="#">
-                    <!--No muestra la imagen y tiene los .. que no deberia tener-->
-                    <img src="../static/imagenes/CreepsLogo.JPG" alt="Logo" style="width: 25px; height: 25px;"/>           
+                <a class="navbar-brand" href="@{/index}">
+                    <img th:src="@{/imagenes/CreepsLogo.JPG}" alt="Logo" style="width: 100px; height: 100px; margin-left: 40px;"/>           
                 </a>
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav">
@@ -34,17 +33,25 @@
                         </li>
                     </ul>
                 </div>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user" style="color: #f2e2ce;"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"
-                         style="background-color: #f2e2ce; color: #0d0d0d;">
-                        <a class="dropdown-item" href="#">Inicio de sesion</a>                    
-                    </div>
-                    <div class="empty-space" style="width: 20px;"></div>
-                </div>
+                <ul class="navbar-nav" sec:autorized="!isAuthenticated()">
+                    <li class="nav-item px-2">
+                        <li class="nav-item text-white my-auto">
+                            <i class="fas fa-user"></i>
+                            <span sec:authentication="name">None</span>
+                        </li>
+                        <a class="nav-menu-link nav-link"
+                           th:href="@{/login}">
+                            <i class="fas fa-sign-in-alt"></i>
+                        </a>
+                        <li class="nav-item my-auto">
+                            <form method="post" th:action="@{/logout}">
+                                <button class="btn btn-dark">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                </button>
+                            </form>
+                        </li>
+                    </li>
+                </ul>
                 <div>
                     <p></p>
                 </div>

@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -23,22 +25,17 @@ public class Producto {
     //Mapea el campo de la clase a una columna específica en la tabla de la base de datos
     private Long idProducto;
     
-    private String nombre;
-    private String genero;
+    private String nombre;    
     private String talla;
     private int precio;
     private int stock;
     private String urlImagen;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_genero")
+    Genero genero;
 
     public Producto() {
-    }
-
-    public Producto(String nombre, String genero, String talla, int precio, int stock, String urlImagen) {
-        this.nombre = nombre;
-        this.genero = genero;
-        this.talla = talla;
-        this.precio = precio;
-        this.stock = stock;
-        this.urlImagen = urlImagen;
-    }  
+    }       
+    
 }

@@ -58,6 +58,34 @@
             </nav>
         </header>
 
+        <div th:fragment="categorias" class="div">
+            <h1 class="text-center">Creeps</h1>
+            <div class="container" style="margin-left: 250px">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="card" style="width: 300px;">
+                            <img th:src="@{/imagenes/hombres.jpg}" class="card-img-top" alt="Men clothing" style="height: 400px; width: 300px;"/>
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Hombres</h5>
+                                <p class="card-text">Encuentra lo ultimo que tenemos en streetwear masculino.</p>
+                                <a href="#" class="btn btn-primary">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card" style="width: 300px;">
+                            <img th:src="@{/imagenes/mujeres.jpg}" class="card-img-top" alt="Women clothing" style="height: 400px; width: 300px;"/>
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Mujeres</h5>
+                                <p class="card-text">Encuentra lo ultimo que tenemos en streetwear femenino.</p>
+                                <a href="#" class="btn btn-primary">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <footer th:fragment="footer" class="footer">
             <div class="container-fluid" style="background-color: #0d0d0d; color: #f2e2ce; padding: 20px 0;">
                 <div class="row justify-content-center">

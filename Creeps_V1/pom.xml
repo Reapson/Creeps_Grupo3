@@ -29,8 +29,10 @@
 	<properties>
 		<java.version>19</java.version>
 	</properties>
-	<dependencies>
-		<dependency>
+        
+        <dependencies>
+        
+	<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
@@ -38,6 +40,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+ 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -53,9 +56,9 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency> 
+        </dependency>
         
-        <!-- Se agregan manualmente al pom -->          
+        <!--            Dependencias agregadas                -->
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
@@ -81,7 +84,8 @@
             <artifactId>webjars-locator</artifactId>
             <version>0.46</version>
         </dependency>
-                               
+        
+        <!--Dependencias relacionadas a la conexion a la base de datos-->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
@@ -90,13 +94,31 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>        
-           
+        </dependency>
+        
+        <!--Dependencias relacionadas a Firebase-->
         <dependency>
             <groupId>com.google.firebase</groupId>
             <artifactId>firebase-admin</artifactId>
             <version>9.2.0</version>
-        </dependency>     
+        </dependency>
+        
+        <!--Dependencias relacionadas a seguridad y roles-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity6</artifactId>
+        </dependency>
+            
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>       
+
+        
 	</dependencies>
 
 	<build>

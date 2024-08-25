@@ -23,13 +23,13 @@
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" th:href="@{/}" style="color: #f2e2ce;">Inicio</a>
+                            <a class="nav-link" th:href="@{/}" style="color: #f2e2ce; font-size: 18px;">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/busqueda/busqueda}" style="color: #f2e2ce;">Búsqueda</a>
+                            <a class="nav-link" th:href="@{/busqueda/busqueda}" style="color: #f2e2ce; font-size: 18px;">Búsqueda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/admin/admin}" style="color: #f2e2ce;">Administración</a>
+                            <a class="nav-link" th:href="@{/admin/admin}" style="color: #f2e2ce; font-size: 18px;">Administración</a>
                         </li>
                     </ul>
                 </div>
@@ -68,7 +68,7 @@
                             <div class="card-body text-center">
                                 <h5 class="card-title">Hombres</h5>
                                 <p class="card-text">Encuentra lo ultimo que tenemos en streetwear masculino.</p>
-                                <a href="#" class="btn btn-primary">Comprar</a>
+                                <a th:href="@{/categorias/hombres}" class="btn btn-primary">Comprar</a>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                             <div class="card-body text-center">
                                 <h5 class="card-title">Mujeres</h5>
                                 <p class="card-text">Encuentra lo ultimo que tenemos en streetwear femenino.</p>
-                                <a href="#" class="btn btn-primary">Comprar</a>
+                                <a th:href="@{/categorias/mujeres}" class="btn btn-primary">Comprar</a>
                             </div>
                         </div>
                     </div>

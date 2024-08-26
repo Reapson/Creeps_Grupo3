@@ -64,15 +64,6 @@ public class AdminController {
         return "/admin/modificarProducto";
     }
     
-//    @GetMapping("/modificar/{idProducto}")
-//    public String productoModificar(Producto producto, Model model) {
-//        producto = productoService.getProducto(producto);
-//        var categorias = categoriaService.getCategorias(false);
-//        model.addAttribute("categorias", categorias);
-//        model.addAttribute("producto", producto);
-//        return "/producto/modifica";
-//    } 
-    
     @PostMapping("/guardarProducto")
     public String productoGuardar(Producto producto,
             @RequestParam("imagenFile") MultipartFile imagenFile) {        

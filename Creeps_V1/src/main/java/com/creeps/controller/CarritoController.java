@@ -20,15 +20,8 @@ public class CarritoController {
     private ItemService itemService;
     @Autowired
     private ProductoService productoService;
-
-    @GetMapping("/")
-    private String listado(Model model) {
-        var productos = productoService.getProductos();
-        model.addAttribute("productos", productos);
-        return "/index";
-    }
-//Para ver el carrito
-
+    
+    //Para ver el carrito
     @GetMapping("/carrito/listado")
     public String inicio(Model model) {
         var items = itemService.gets();
@@ -41,8 +34,8 @@ public class CarritoController {
                 carritoTotalVenta);
         return "/carrito/listado";
     }
-//Para Agregar un producto al carrito
-
+    
+    //Para Agregar un producto al carrito
     @GetMapping("/carrito/agregar/{idProducto}")
     public ModelAndView agregarItem(Model model, Item item) {
         Item item2 = itemService.get(item);

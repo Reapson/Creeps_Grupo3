@@ -1,45 +1,74 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://wwww.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{layout/plantilla :: head}">
         <title>Creeps</title>
         <meta charset="UTF-8"/>
     </head>
     <body>
-        <header th:replace="~{layout/plantilla :: header}"/>
-        <div class="container my-5">
-            <div class="row align-items-center"> 
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header bg-success" style="color: white;" ><h2>Iniciar Sesion</h2></div>
-                        <div class="card-body" style="background-color: black;">
+        <header th:replace="~{layout/plantilla :: header2}"></header>
+
+        <div class="container-fluid" style="background-image: url('https://firebasestorage.googleapis.com/v0/b/creeps-2f924.appspot.com/o/login.JPG?alt=media&token=dfd9d3ff-d91a-40d8-a707-ffae6a72537d'); background-size: cover; background-position: center; height: 80vh;">
+            <div class="row align-items-start justify-content-center" style="height: 100%;">
+                <div class="col-md-6 d-flex justify-content-center">
+
+                    <div class="card" style="width: 500px; height: 800px; margin-top: 50px;">
+                        <div class="card-header" style="background-color: #7F766D; color: #f2e2ce; text-align: center;">
+                            <h2 style="color: #f2e2ce;">Iniciar Sesión</h2>
+                        </div>
+                        <div class="card-body" style="background-color: #7F766D;">
                             <form method="POST" th:action="@{/login}">
-                                <div class="form-group row my-3">
-                                    <label class="col-md-5 my-auto" for="username" style="color: white;"><i class="fas fa-user-lock"></i>Usuario</label>
-                                    <div class="col-md-7 my-auto">
-                                        <input class="form-control" type="text" name="username" id="username"/></div></div>
-                                <div class="form-group row my-3">
-                                    <label class="col-md-5 my-auto" for="password" style="color: white;"><i class="fas fa-key"></i>Contraseña</label>
-                                    <div class="col-md-7 my-auto"><input class="form-control" type="password" name="password" id="password"/></div></div>
-                                <div class="card-footer col text-center">
-                                    <button class="btn btn-primary" style="background-color: white;">
-                                        <a th:href="@{/registro/nuevo}" class="btn"><i class="fas fa-user-plus"></i>Registrar</a></button>
-                                    <button class="btn btn-info" style="background-color: white;">                                        
-                                        <a th:href="@{/registro/recordar}" class="btn"><i class="fas fa-envelope"></i>Recordar</a></button>
-                                    <button class="btn btn-success" type="submit" style="background-color: white;">
-                                        <span class="btn"><i class="fas fa-sign-in-alt"></i>
-                                            Iniciar Sesion</span></button>
+
+                                <div class="form-group my-3" style="text-align: center;">
+                                    <label for="username" style="color: #f2e2ce; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-user-lock" style="color: #f2e2ce; margin-right: 5px;"></i> Usuario
+                                    </label>
+                                    <input class="form-control" type="text" name="username" id="username" style="text-align: center;" />
                                 </div>
-                            </form>                            
+
+                                <div class="form-group my-3" style="text-align: center;">
+                                    <label for="password" style="color: #f2e2ce; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-key" style="color: #f2e2ce; margin-right: 5px;"></i> Contraseña
+                                    </label>
+                                    <input class="form-control" type="password" name="password" id="password" style="text-align: center;" />
+                                </div>
+
+                                <div class="form-group my-3" style="text-align: center;">
+                                    <div th:if="${param.error != null}">
+                                        <h3 style="color: #73161e;">Error de inicio de sesión</h3>
+                                    </div>
+                                </div>
+
+                                <div class="card-footer d-flex flex-column align-items-center" style="text-align: center;">
+
+
+                                    <a th:href="@{/registro/nuevo}" class="btn" style="background-color: #73161e; color: #ffffff; width: 200px; margin-top: 20px; text-decoration: none;">
+                                        <i class="fas fa-user-plus" style="margin-right: 5px;"></i> Registrar
+                                    </a>          
+
+                                    <a th:href="@{/registro/recordar}" class="btn" style="background-color: #73161e; color: #ffffff; width: 200px; margin-top: 20px; text-decoration: none;">
+                                        <i class="fas fa-envelope" style="margin-right: 5px;"></i> Recordar
+                                    </a>                                  
+
+                                    <button class="btn" type="submit" style="background-color: #73161e; color: #ffffff; width: 200px; margin-top: 20px;">
+                                        <span class="btn" style="color: #ffffff; text-decoration: none;">
+                                            <i class="fas fa-sign-in-alt" style="color: #ffffff; margin-right: 5px;"></i>Iniciar Sesión
+                                        </span>
+                                    </button>
+
+                                    <a th:href="@{/}" class="btn" style="background-color: #262626; color: #ffffff; width: 200px; margin-top: 150px; text-decoration: none;">
+                                        <i class="fas fa-arrow-left" style="color: #ffffff; margin-right: 5px;"></i> Atras
+                                    </a>
+
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <div th:if="${param.error != null}">
-                        <h3>Error en inicio de sesion</h3>
-                    </div>
                 </div>
-            </div>           
+            </div>
         </div>
+        
         <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>
 </html>
+

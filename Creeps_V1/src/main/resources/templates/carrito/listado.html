@@ -8,7 +8,22 @@
     </head>
     <body>
         <header th:replace="~{layout/plantilla :: header}"/>
-        <section th:replace="~{carrito/fragmentos :: listadoCarrito}"/>
+        
+        <div class="container-fluid d-flex flex-column justify-content-center align-items-center" style="background-image: url('https://firebasestorage.googleapis.com/v0/b/creeps-2f924.appspot.com/o/Fondo.JPG?alt=media&token=4c67f24d-b3ef-4790-b0a7-39cc3b8a1225'); background-size: cover; background-position: center; height: 80vh;">
+        <div class="row justify-content-center">
+            <div class="col-md-5 d-flex flex-column align-items-center mb-4 me-md-3 rounded" style="background-color: rgba(255, 255, 255, 0.8); padding: 20px; height: 1000px; width: 1600px;">
+                <section th:replace="~{carrito/fragmentos :: listadoCarrito}"/>                
+            </div>
+        </div>
+    </div>
+        
+        
+        
+        
+        
+        
+        
+        
         <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>
 </html>

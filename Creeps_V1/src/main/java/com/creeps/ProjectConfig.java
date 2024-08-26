@@ -47,17 +47,72 @@ public class ProjectConfig implements WebMvcConfigurer {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests((requests) -> requests
-                .anyRequest().permitAll() // Permitir acceso a todas las rutas
+                //                Vistas permitidas para todos los usuarios
+                .authorizeHttpRequests((request) -> request
+                .requestMatchers(
+                        "/css/**",
+                        "/js/**",
+                        "/images/**",
+                        "/webjars/**",
+                        "/",
+                        "/index",
+                        "/login",
+                        "/registro/nuevo",
+                        "/registro/crearUsuario",
+                        "/registro/recordar",
+                        "/busqueda",
+                        "/busqueda/busqueda",
+                        "/busqueda/filtrada",
+                        "/busqueda/filtrada/**",
+                        "/registro",
+                        "/registro/nuevo",
+                        "/registro/recordar",
+                        "/registro/crearUsuario",
+                        "/registro/activacion/**",
+                        "/registro/activar",
+                        "/registro/recordarUsuario",
+                        "/layout/plantilla"
+                )
+                .permitAll()
+                //              Vistas exclusivas para admin
+                .requestMatchers(
+                        "/admin",
+                        "/admin/admin",
+                        "/admin/registrarProducto",
+                        "/admin/modificarProducto/**",
+                        "/admin/guardarProducto",
+                        "/admin/eliminarProducto/**"
+                ).hasRole("ADMIN")
+                //              Vista exclusiva para Users
+                .requestMatchers(
+                        "/carrito/listado",
+                        "/carrito/agregar/**",
+                        "/carrito/modificar/**",
+                        "/carrito/eliminar/**",
+                        "/carrito/guardar",
+                        "/facturar/carrito"
+                )
+                .hasRole("USER")
                 )
                 .formLogin((form) -> form
-                .loginPage("/login").permitAll()
-                )
+                .loginPage("/login").permitAll())
                 .logout((logout) -> logout.permitAll());
-
         return http.build();
     }
 
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                .authorizeHttpRequests((requests) -> requests
+//                .anyRequest().permitAll() // Permitir acceso a todas las rutas
+//                )
+//                .formLogin((form) -> form
+//                .loginPage("/login").permitAll()
+//                )
+//                .logout((logout) -> logout.permitAll());
+//
+//        return http.build();
+//    }
     @Autowired
     private UserDetailsService userDetailsService;
 

@@ -8,98 +8,195 @@
     <body>
         <!-- NUEVO USUARIO -->
         <section th:fragment="nuevoUsuario">
-            <div class="row py-2 justify-content-center">
-                <div class="col-md-3">
-                    <section>
-                        
-                        <!--Boton de regreso-->
-                        <div class="col-md-4 d-grid">
-                            <a th:href="@{/login}" class="btn btn-primary">
-                                <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
-                            </a>
+            <div class="row align-items-start justify-content-center" style="height: 100%;">
+                <div class="col-md-6 d-flex justify-content-center">
+
+                    <div class="card" style="width: 500px; height: 800px; margin-top: 50px;">
+                        <div class="card-header" style="background-color: #7F766D; color: #f2e2ce; text-align: center;">
+                            <h2 style="color: #f2e2ce;">[[#{usuario.agregar}]]</h2>
                         </div>
-                        
-                    </section>
-                </div>
-                
-                <!--    Formulario  -->
-                <div class="row py-2 justify-content-center">
-                    <div class="col-md-3">
-                        <form method="POST" th:action="@{/registro/crearUsuario}" th:object="${usuario}" class="was-validated">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>[[#{usuario.agregar}]]</h4>
+                        <div class="card-body" style="background-color: #7F766D;">
+
+                            <form method="POST" th:action="@{/registro/crearUsuario}" th:object="${usuario}" class="was-validated">
+                                <div class="form-group my-3" style="text-align: center;">
+                                    <label for="username" style="color: #f2e2ce; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-user" style="color: #f2e2ce; margin-right: 5px;"></i> [[#{usuario.username}]]
+                                    </label>
+                                    <input type="text" class="form-control" name="username" th:field="*{username}" required="true" style="text-align: center;"/>
                                 </div>
-                                <div class="card-body">
-                                    <div class="mb-3">
-                                        <label for="username">[[#{usuario.username}]]</label>
-                                        <input type="text" class="form-control" name="username" th:field="*{username}" required="true"/></div>
-                                    <div class="mb-3">
-                                        <label for="nombre">[[#{usuario.nombre}]]</label>
-                                        <input type="text" class="form-control" name="nombre" th:field="*{nombre}" required="true"/></div>
-                                    <div class="mb-3">
-                                        <label for="apellidos">[[#{usuario.apellidos}]]</label>
-                                        <input type="text" class="form-control" name="apellidos" th:field="*{apellidos}"
-                                               required="true"/></div>
-                                    <div class="mb-3">
-                                        <label for="email">[[#{usuario.correo}]]</label>
-                                        <input type="email" class="form-control"
-                                               name="correo" th:field="*{correo}"
-                                               required="true"/></div></div>
-                                <div class="card-footer text-end">
-                                    <button type="submit" class="btn btn-success">
-                                        <i class="fas fa-envelope"></i> Registrar Usuario
-                                    </button></div>
-                            </div>
-                        </form>
+
+                                <div class="form-group my-3" style="text-align: center;">
+                                    <label for="nombre" style="color: #f2e2ce; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-user-tag" style="color: #f2e2ce; margin-right: 5px;"></i> [[#{usuario.nombre}]]
+                                    </label>
+                                    <input type="text" class="form-control" name="nombre" th:field="*{nombre}" required="true" style="text-align: center;"/>
+                                </div>
+
+                                <div class="form-group my-3" style="text-align: center;">
+                                    <label for="apellidos" style="color: #f2e2ce; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-user" style="color: #f2e2ce; margin-right: 5px;"></i> [[#{usuario.apellidos}]]
+                                    </label>
+                                    <input type="text" class="form-control" name="apellidos" th:field="*{apellidos}" required="true" style="text-align: center;"/>
+                                </div>
+
+                                <div class="form-group my-3" style="text-align: center;">
+                                    <label for="email" style="color: #f2e2ce; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-envelope" style="color: #f2e2ce; margin-right: 5px;"></i> [[#{usuario.correo}]]
+                                    </label>
+                                    <input type="email" class="form-control" name="correo" th:field="*{correo}" required="true" style="text-align: center;"/>
+                                </div>
+
+                                <div class="card-footer d-flex flex-column align-items-center" style="text-align: center;">
+                                    <button type="submit" class="btn btn-success" style="background-color: #73161e; color: #ffffff; width: 200px; margin-top: 20px;">
+                                        <i class="fas fa-envelope" style="color: #ffffff; margin-right: 5px;"></i> Registrar Usuario
+                                    </button>
+
+                                    <a th:href="@{/login}" class="btn" style="background-color: #262626; color: #ffffff; width: 200px; margin-top: 20px; text-decoration: none;">
+                                        <i class="fas fa-arrow-left" style="color: #ffffff; margin-right: 5px;"></i> [[#{accion.regresar}]]
+                                    </a>
+                                </div>
+
+
+                            </form>
+                        </div>
                     </div>
                 </div>
-                <!----->                
+            </div>
+        </section>
+
+
+        <!-- 2 Fragmento que se utiliza activar un usuario -->
+        <section th:fragment="activarUsuario">
+            <div class="row align-items-start justify-content-center" style="height: 100%;">
+                <div class="col-md-6 d-flex justify-content-center">
+
+                    <div class="card" style="width: 500px; height: 800px; margin-top: 50px;">
+                        <div class="card-header" style="background-color: #7F766D; color: #f2e2ce; text-align: center;">
+                            <h2 style="color: #f2e2ce;">[[#{registro.activar}]]</h2>
+                        </div>
+                        <div class="card-body" style="background-color: #7F766D;">
+                            <form method="POST" th:action="@{/registro/activar}" th:object="${usuario}" class="was-validated" enctype="multipart/form-data">
+                                <input type="hidden" name="idUsuario" th:field="*{idUsuario}"/>
+
+                                <div class="form-group my-3" style="text-align: center;">
+                                    <label for="username" style="color: #f2e2ce; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-user" style="color: #f2e2ce; margin-right: 5px;"></i> [[#{usuario.username}]]
+                                    </label>
+                                    <input type="text" class="form-control" name="username" th:field="*{username}" required="true" style="text-align: center;"/>
+                                </div>
+
+                                <div class="form-group my-3" style="text-align: center;">
+                                    <label for="nombre" style="color: #f2e2ce; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-user-tag" style="color: #f2e2ce; margin-right: 5px;"></i> [[#{usuario.nombre}]]
+                                    </label>
+                                    <input type="text" class="form-control" name="nombre" th:field="*{nombre}" required="true" style="text-align: center;"/>
+                                </div>
+
+                                <div class="form-group my-3" style="text-align: center;">
+                                    <label for="apellidos" style="color: #f2e2ce; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-user" style="color: #f2e2ce; margin-right: 5px;"></i> [[#{usuario.apellidos}]]
+                                    </label>
+                                    <input type="text" class="form-control" name="apellidos" th:field="*{apellidos}" required="true" style="text-align: center;"/>
+                                </div>
+
+                                <div class="form-group my-3" style="text-align: center;">
+                                    <label for="email" style="color: #f2e2ce; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-envelope" style="color: #f2e2ce; margin-right: 5px;"></i> [[#{usuario.correo}]]
+                                    </label>
+                                    <input type="email" class="form-control" name="correo" th:field="*{correo}" required="true" style="text-align: center;"/>
+                                </div>
+
+                                <div class="form-group my-3" style="text-align: center;">
+                                    <label for="telefono" style="color: #f2e2ce; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-phone" style="color: #f2e2ce; margin-right: 5px;"></i> [[#{usuario.telefono}]]
+                                    </label>
+                                    <input type="tel" class="form-control" name="telefono" th:field="*{telefono}" style="text-align: center;"/>
+                                </div>
+
+                                <div class="form-group my-3" style="text-align: center;">
+                                    <label for="password" style="color: #f2e2ce; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-lock" style="color: #f2e2ce; margin-right: 5px;"></i> [[#{usuario.password}]]
+                                    </label>
+                                    <input type="password" class="form-control" name="password" th:field="*{password}" style="text-align: center;"/>
+                                </div>
+
+                                <div class="form-group my-3" style="text-align: center;">
+                                    <label for="imagen" style="color: #f2e2ce; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-image" style="color: #f2e2ce; margin-right: 5px;"></i> [[#{usuario.imagen}]]
+                                    </label>
+                                    <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);" />
+                                    <img id="blah" th:src="@{${usuario.rutaImagen}}" alt="your image" height="200" style="margin-top: 10px;"/>
+                                </div>
+
+                                <div class="card-footer d-flex flex-column align-items-center" style="text-align: center;">
+                                    <button type="submit" class="btn btn-success" style="background-color: #73161e; color: #ffffff; width: 200px; margin-top: 20px;">
+                                        <i class="fas fa-check" style="color: #ffffff; margin-right: 5px;"></i> [[#{usuario.activacion}]]
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3 Fragmento que se utiliza recordar un usuario -->
+        <section th:fragment="recordarUsuario">
+            <div class="row align-items-start justify-content-center" style="height: 100%;">
+                <div class="col-md-6 d-flex justify-content-center">
+
+                    <div class="card" style="width: 500px; height: 600px; margin-top: 50px;">
+                        <div class="card-header" style="background-color: #7F766D; color: #f2e2ce; text-align: center;">
+                            <h2 style="color: #f2e2ce;">[[#{registro.recordar.us}]]</h2>
+                        </div>
+                        <div class="card-body" style="background-color: #7F766D;">
+                            <form method="POST" th:action="@{/registro/recordarUsuario}" th:object="${usuario}">
+                                <div class="form-group my-3" style="text-align: center;">
+                                    <label for="username" style="color: #f2e2ce; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-user" style="color: #f2e2ce; margin-right: 5px;"></i> [[#{usuario.username}]]
+                                    </label>
+                                    <input type="text" class="form-control" name="username" th:field="*{username}" id="username" style="text-align: center;" />
+                                </div>
+
+                                <div class="form-group my-3" style="text-align: center;">
+                                    <label for="email" style="color: #f2e2ce; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-envelope" style="color: #f2e2ce; margin-right: 5px;"></i> [[#{usuario.correo}]]
+                                    </label>
+                                    <input type="email" class="form-control" name="correo" th:field="*{correo}" id="email" style="text-align: center;" />
+                                </div>
+
+                                <div class="card-footer d-flex flex-column align-items-center" style="text-align: center;">
+                                    <button type="submit" class="btn btn-success" style="background-color: #73161e; color: #ffffff; width: 200px; margin-top: 20px;">
+                                        <i class="fas fa-address-card" style="color: #ffffff; margin-right: 5px;"></i> [[#{registro.recordar.us}]]
+                                    </button>
+
+                                    <a th:href="@{/login}" class="btn" style="background-color: #262626; color: #ffffff; width: 200px; margin-top: 20px; text-decoration: none;">
+                                        <i class="fas fa-arrow-left" style="color: #ffffff; margin-right: 5px;"></i> [[#{accion.regresar}]]
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         
-        <!-- 2 Fragmento que se utiliza activar un usuario -->
-        <section th:fragment="activarUsuario">
-            <div class="row py-2 justify-content-center">
-                <div class="col-md-3">
-                    <form method="POST" th:action="@{/registro/activar}" th:object="${usuario}" class="was-validated" enctype="multipart/form-data">
-                        <input type="hidden" name="idUsuario" th:field="*{idUsuario}"/>
-                        <div class="card">
-                            <div class="card-header align-items-center">
-                                <h4>[[#{registro.activar}]]</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <label for="username">[[#{usuario.username}]]</label>
-                                    <input type="text" class="form-control" name="username" th:field="*{username}" required="true"/></div>
-                                <div class="mb-3">
-                                    <label for="nombre">[[#{usuario.nombre}]]</label>
-                                    <input type="text" class="form-control" name="nombre" th:field="*{nombre}" required="true"/></div>
-                                <div class="mb-3">
-                                    <label for="apellidos">[[#{usuario.apellidos}]]</label>
-                                    <input type="text" class="form-control" name="apellidos" th:field="*{apellidos}" required="true"/></div>
-                                <div class="mb-3">
-                                    <label for="email">[[#{usuario.correo}]]</label>
-                                    <input type="email" class="form-control" name="correo" th:field="*{correo}" required="true"/></div>
-                                <div class="mb-3">
-                                    <label for="telefono">[[#{usuario.telefono}]]</label>
-                                    <input type="tel" class="form-control" name="telefono" th:field="*{telefono}"/></div>
-                                <div class="mb-3">
-                                    <label for="password">[[#{usuario.password}]]</label>
-                                    <input type="password" class="form-control" name="password" th:field="*{password}"/></div>
-                                <div class="mb-3">
-                                    <label for="imagen">[[#{usuario.imagen}]]</label>
-                                    <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);" />
-                                    <img id="blah" th:src="@{${usuario.rutaImagen}}" alt="your image" height="200"/>
-                                </div>
-                            </div>
-                            <div class="card-footer align-items-center">
-                                <button type="submit" class="btn btn-success">
-                                    <i class="fas fa-check"></i> [[#{usuario.activacion}]]
-                                </button>
-                            </div>
+        <section th:fragment="verificacionCorreo">
+            <div class="row align-items-start justify-content-center" style="height: 100%;">
+                <div class="col-md-6 d-flex justify-content-center">
+                    <div class="card" style="width: 500px; height: 200px; margin-top: 50px;">
+                        <div class="card-header" style="background-color: #7F766D; color: #f2e2ce; text-align: center;">
+                            <h2 style="color: #f2e2ce;">Correo de Verificación</h2>
                         </div>
-                    </form>
+                        <div class="card-body" style="background-color: #7F766D; color: #f2e2ce; text-align: center;">
+                            <strong>Se ha enviado un correo de verificación</strong>
+                        </div>
+                        <div class="card-footer d-flex flex-column align-items-center" style="text-align: center;">
+                            <a th:href="@{/}" class="btn" style="background-color: #262626; color: #ffffff; width: 200px; margin-top: 20px; text-decoration: none;">
+                                <i class="fas fa-home" style="color: #ffffff; margin-right: 5px;"></i> Regresar a Inicio
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

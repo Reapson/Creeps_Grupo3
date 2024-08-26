@@ -70,6 +70,7 @@ public class ProjectConfig implements WebMvcConfigurer{
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+<<<<<<< HEAD
     http
         .authorizeHttpRequests((requests) -> requests
             .anyRequest().permitAll() // Permitir acceso a todas las rutas
@@ -81,6 +82,37 @@ public class ProjectConfig implements WebMvcConfigurer{
     
     return http.build();
 }
+=======
+        http
+                .authorizeHttpRequests((request) -> request
+                .requestMatchers("/", "/index", "/errores/**",
+                        "/carrito/**", "/busqueda/**", "/reportes/**",
+                        "/registro/**", "/js/**", "/webjars/**", "/imagenes/**",
+                        "/categorias/**", "/carrito/**", "/pruebas/**", "/reportes/**",
+                        "/registro/**", "/js/**", "/webjars/**")
+                .permitAll() //todos los roles van a tener acceso a las vistas que estan arriba
+                .requestMatchers(
+                        "/producto/nuevo", "/producto/guardar",
+                        "/producto/modificar/**", "/producto/eliminar/**",
+                        "/categoria/nuevo", "/categoria/guardar",
+                        "/categoria/modificar/**", "/categoria/eliminar/**",
+                        "/usuario/nuevo", "/usuario/guardar",
+                        "/usuario/modificar/**", "/usuario/eliminar/**",
+                        "/reportes/**"
+                ).hasRole("ADMIN") //Todas las listas que estan en el apartado de arriba lsa puede ver el admin
+                .requestMatchers(
+                        "/producto/listado",
+                        "/usuario/listado"
+                ).hasAnyRole("ADMIN", "VENDEDOR") // Todas las vistas que estan arriba las pueden ver un admin o un vendedor
+                .requestMatchers("/facturar/carrito")
+                .hasRole("USER") // El rol user solo puede ver la vista carrito (tenga acceso/request)
+                )
+                .formLogin((form) -> form
+                .loginPage("/login").permitAll())
+                .logout((logout) -> logout.permitAll());
+        return http.build();
+    }
+>>>>>>> 9a2cdd1a3f71999b3ea5785078a09678f4f8eb10
     
     @Autowired
     private UserDetailsService userDetailsService;

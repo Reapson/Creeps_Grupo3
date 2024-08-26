@@ -88,7 +88,7 @@
                                         <tr th:each="producto : ${productos}">
                                             <td>[[${producto.idProducto}]]</td>
                                             <td>[[${producto.nombre}]]</td>
-                                            <td>[[${producto.genero}]]</td>
+                                            <td>[[${producto.genero.descripcion}]]</td>
                                             <td>[[${producto.talla}]]</td>
                                             <td>[[${producto.precio}]]</td>
                                             <td>[[${producto.stock}]]</td>

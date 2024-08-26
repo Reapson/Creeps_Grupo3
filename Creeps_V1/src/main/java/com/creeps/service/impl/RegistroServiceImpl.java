@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.creeps.service.impl;
 
 import com.creeps.domain.Usuario;
@@ -26,7 +23,7 @@ public class RegistroServiceImpl implements RegistroService {
     @Autowired
     private UsuarioService usuarioService;
     @Autowired
-    private MessageSource messageSource; //creado en semana 4...
+    private MessageSource messageSource;
     @Autowired
     private FirebaseStorageServiceImpl firebaseStorageService;
 
@@ -55,7 +52,7 @@ public class RegistroServiceImpl implements RegistroService {
     @Override
     public void activar(Usuario usuario) {
         var codigo = new BCryptPasswordEncoder();
-        usuario.setPassword(codigo.encode(usuario.getPassword()));        
+        usuario.setPassword(codigo.encode(usuario.getPassword()));
         usuarioService.save(usuario, true);
     }
 

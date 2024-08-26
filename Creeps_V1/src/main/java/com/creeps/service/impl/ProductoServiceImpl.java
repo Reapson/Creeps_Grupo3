@@ -10,20 +10,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class ProductoServiceImpl implements ProductoService{
+public class ProductoServiceImpl implements ProductoService {
 
     @Autowired
     private ProductoDao productoDao;
-    
+
     @Override
-    @Transactional(readOnly=true)
+    @Transactional(readOnly = true)
     public List<Producto> getProductos() {
-        var lista=productoDao.findAll();
+        var lista = productoDao.findAll();
         return lista;
     }
 
     @Override
-    @Transactional(readOnly=true)
+    @Transactional(readOnly = true)
     public Producto getProducto(Producto producto) {
         return productoDao.findById(producto.getIdProducto()).orElse(null);
     }
@@ -39,5 +39,17 @@ public class ProductoServiceImpl implements ProductoService{
     public void delete(Producto producto) {
         productoDao.delete(producto);
     }
-    
+
+//    ProductoDao
+    @Override
+    @Transactional(readOnly = true)
+    public List<Producto> findByGeneroDescripcionContainingIgnoreCase(String genero) {
+        return productoDao.findByGeneroDescripcionContainingIgnoreCase(genero);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Producto> getProductosByGenero(Long idGenero) {
+        return productoDao.findByGeneroIdGenero(idGenero);
+    }
 }

@@ -5,16 +5,49 @@
     <head th:replace="~{layout/plantilla :: head}">
         <title>Creeps</title>
     </head>
-    
-    <body>
-        
+
+    <body>       
+
+        <!--
+                <section th:fragment="seleccionGenero">
+                    <form th:action="@{/busqueda/busqueda}" method="get">
+                        <div class="form-group">
+                            <label for="genero">Seleccionar Género</label>
+                            <select id="genero" name="genero" class="form-control">
+                                <option value="">--Seleccionar Género 123--</option>
+                                <option th:each="genero : ${generos}" th:value="${genero.descripcion}" th:text="${genero.descripcion}"></option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-2">Buscar</button>
+                    </form>
+                </section>-->
+
+        <section th:fragment="seleccionGenero">
+            <form th:action="@{/busqueda/busqueda}" method="get">
+                <div class="form-group">                    
+                    <div class="row">
+                        <div class="col-md-8">
+                            <select id="genero" name="idGenero" class="form-control" style="margin-bottom: 20px;">
+                                <option value="">--Seleccionar Género--</option>
+                                <option th:each="genero : ${generos}" 
+                                        th:value="${genero.idGenero}" 
+                                        th:text="${genero.descripcion}"></option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 d-flex align-items-end">
+                            <button type="submit" class="btn w-100" style="background-color: #73161e; color: white; margin-bottom: 1rem;">Buscar</button>
+                        </div>
+                    </div>
+                </div>                
+            </form>
+        </section>
         <section th:fragment="productosGrid" id="productos">
             <div class="container">
-                <div class="row row-cols-1 row-cols-md-3 g-4"> 
+                <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div th:each="producto : ${productos}" class="col">
-                        <div class="card h-100">
+                        <div class="card h-100" style="width: 300px; height: 400px;">
                             <a th:href="@{'/producto/detalles/' + ${producto.idProducto}}">
-                                <img th:src="@{${producto.urlImagen}}" class="card-img-top" alt="Imagen de [[${producto.nombre}]]"</img>
+                                <img th:src="@{${producto.urlImagen}}" class="card-img-top" alt="Imagen de [[${producto.nombre}]]" style="height: 300px; width: 100%; object-fit: cover; object-position: center top;">
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title">[[${producto.nombre}]]</h5>
@@ -25,6 +58,6 @@
                 </div>
             </div>
         </section>
-        
+
     </body>
 </html>

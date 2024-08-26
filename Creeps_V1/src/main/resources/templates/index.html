@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Creeps</title>
+</head>
+<body>
+    <header th:replace="~{layout/plantilla :: header}"></header>
     
-    <head th:replace="~{layout/plantilla :: head}">
-        <title>Creeps</title>
-        
-    </head>
-    <body>
-        <header th:replace="~{layout/plantilla :: header}"/>
-        <div th:replace="~{layout/plantilla :: categorias}"/>
-        <footer th:replace="~{layout/plantilla :: footer}"/>
-    </body>
+    <!-- Contenido principal -->
+    <div class="container-fluid d-flex flex-column justify-content-center align-items-center" style="background-image: url('https://firebasestorage.googleapis.com/v0/b/creeps-2f924.appspot.com/o/Fondo.JPG?alt=media&token=4c67f24d-b3ef-4790-b0a7-39cc3b8a1225'); background-size: cover; background-position: center; height: 80vh;">
+        <div class="row justify-content-center">
+            <div class="col-md-5 d-flex flex-column align-items-center mb-4 me-md-3 rounded" style="background-color: rgba(255, 255, 255, 0.8); padding: 20px;">
+                <img src="https://firebasestorage.googleapis.com/v0/b/creeps-2f924.appspot.com/o/Hombres.JPG?alt=media&token=54bc402c-d2fb-457f-8f10-7bf3ad542144" class="img-fluid mb-2" alt="Hombres" style="max-height: 1000px; object-fit: cover;">
+                <p>Hombres</p>
+            </div>
+            <div class="col-md-5 d-flex flex-column align-items-center mb-4 ms-md-3 rounded" style="background-color: rgba(255, 255, 255, 0.8); padding: 20px;">
+                <img src="https://firebasestorage.googleapis.com/v0/b/creeps-2f924.appspot.com/o/Mujeres.JPG?alt=media&token=75d99aec-278c-4143-a5fd-1f141c206b4c" class="img-fluid mb-2" alt="Mujeres" style="max-height: 1000px; object-fit: cover;">
+                <p>Mujeres</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer th:replace="~{layout/plantilla :: footer}"></footer>
+</body>
 </html>

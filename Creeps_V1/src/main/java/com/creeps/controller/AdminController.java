@@ -1,6 +1,7 @@
 package com.creeps.controller;
 
 import com.creeps.domain.Producto;
+import com.creeps.service.GeneroService;
 import com.creeps.service.ProductoService;
 import com.creeps.service.impl.FirebaseStorageServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -22,12 +23,17 @@ public class AdminController {
     private ProductoService productoService;
     
     @Autowired
+    private GeneroService generoService;
+    
+    @Autowired
     private FirebaseStorageServiceImpl firebaseStorageService;
     
     @GetMapping("admin")
     public String inicio(Model model) {
         var productos = productoService.getProductos();
+        var generos = generoService.getGeneros();
         model.addAttribute("productos", productos);
+        model.addAttribute("generos", generos );
         return "/admin/admin";
     }
     
@@ -50,7 +56,7 @@ public class AdminController {
     }
     
     @GetMapping("/modificarProducto/{idProducto}")
-    public String categoriaModificar(Producto producto, Model model) {
+    public String productoModificar(Producto producto, Model model) {
         producto = productoService.getProducto(producto);
         model.addAttribute("producto", producto);
         return "/admin/modificarProducto";
